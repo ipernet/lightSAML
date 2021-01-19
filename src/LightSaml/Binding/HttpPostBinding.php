@@ -67,7 +67,7 @@ class HttpPostBinding extends AbstractBinding
             throw new LightSamlBindingException('Missing SAMLRequest or SAMLResponse parameter');
         }
 
-        $msg = base64_decode($msg);
+        $msg = gzinflate(base64_decode($msg));
 
         $this->dispatchReceive($msg);
 
